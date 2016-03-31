@@ -1,5 +1,11 @@
 # FE MEDLEY
 short finite element implementation in various languages
+### Instructions
+In the root directory, do
+```
+$>make
+```
+to build the meshes.
 
 ### available languages and todo list
 
