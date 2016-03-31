@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ $# -ne 3 ]
+then
+  echo "USAGE: ./gmsh_with_meshsize <meshsize> <.geo> <.msh>"
+  echo "EXAMPLE: ./gmsh_with_meshsize 0.5 square.geo square_coarse.msh"
+  exit
+fi
+
+new_size=$1
+inputfile_geo=$2
+outputfile_msh=$3
+
+outputfile_geo=${outputfile_msh%.msh}.geo
+
+sed "s/grid_size\s=.*/grid_size = $new_size;/g" < $inputfile_geo > $outputfile_geo
+gmsh -2 $outputfile_geo
+rm $outputfile_geo
